@@ -25,21 +25,22 @@ Author URI: http://scratch99.com/
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-function spc_show_parent_comment( $content ){
-	global $comment;
-	// if there's no parent, return comment text as is, otherwise grab the parent and add it.
-    if ( ! $comment->comment_parent) {
-    	return $content;
+
+// if there's no parent, return comment text as is, otherwise grab the parent and add it.
+function spc_show_parent_comment( $content ) {
+    global $comment;
+    if ( ! $comment->comment_parent ) {
+        return $content;
     }
     else {
         $parent_comment = get_comment( $comment->comment_parent );
-    	$string = '<div style="border:1px solid #ccc; padding: 8px 12px; background:#FEEFEE;">In reply to ' . $parent_comment->comment_author . ' who said: ' . $parent_comment->comment_content . '</div>';
-		return $content . $string;
+        $string = '<div style="border:1px solid #ccc; padding: 8px 12px; background:#FEEFEE;">In reply to ' . $parent_comment->comment_author . ' who said: ' . $parent_comment->comment_content . '</div>';
+        return $content . $string;
     }
 }
 
-function spc_show_parent_comment_admin(){
-	// if it's an admin request, filter comments and add comment parent below text
-	add_filter( 'get_comment_text', 'spc_show_parent_comment' );
+// if it's an admin request, filter comments and add comment parent below text
+function spc_show_parent_comment_admin() {
+    add_filter( 'get_comment_text', 'spc_show_parent_comment' );
 }
 add_action( 'admin_init', 'spc_show_parent_comment_admin' );
