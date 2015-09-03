@@ -29,12 +29,29 @@ Author URI: http://scratch99.com/
 // if there's no parent, return comment text as is, otherwise grab the parent and add it.
 function spc_show_parent_comment( $content ) {
     global $comment;
+
+    // if there's no parent comment, return the comment text unchanged
     if ( ! $comment->comment_parent ) {
         return $content;
     }
+
+    // otherwise grab the parent and add it to the comment
     else {
+
+        // get the parent comment into an object we can use
         $parent_comment = get_comment( $comment->comment_parent );
-        $string = '<div style="border:1px solid #ccc; padding: 8px 12px; background:#FEEFEE;">In reply to ' . $parent_comment->comment_author . ' who said: ' . $parent_comment->comment_content . '</div>';
+
+        // if the user can edit the parent comment, we'll link to the edit screen for the parent comment
+        if ( current_user_can( 'edit_comment', $parent_comment->comment_ID ) ) {
+            $parent_comment_url = admin_url('comment.php?action=editcomment&c=' . absint( $parent_comment->comment_ID ) );
+        }
+        // otherwise we'll link to the parent comment on the front end
+        else {
+            $parent_comment_url = esc_url( get_comment_link( $comment->comment_parent ) );
+        }
+
+        // create the string to be appended to the comment text
+        $string = '<div class="spc-parent" style="border:1px solid #ccc; padding: 8px 12px; background:#FEEFEE;"><span class="submitted-on" >In reply to ' . $parent_comment->comment_author . ' <a href="' . $parent_comment_url . '">who said</a></span>:<br /><br />' . $parent_comment->comment_content . '</div>';
         return $content . $string;
     }
 }
