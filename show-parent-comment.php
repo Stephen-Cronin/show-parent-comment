@@ -51,7 +51,7 @@ function spc_show_parent_comment( $content ) {
         }
 
         // create the string to be appended to the comment text
-        $string = '<div class="spc-parent" style="border:1px solid #ccc; padding: 8px 12px; background:#FEEFEE;"><span class="submitted-on" >In reply to ' . $parent_comment->comment_author . ' <a href="' . $parent_comment_url . '">who said</a></span>:<br /><br />' . $parent_comment->comment_content . '</div>';
+        $string = '<div class="spc-parent-comment-container"><div class="spc-parent-comment"><span class="submitted-on" >In reply to ' . $parent_comment->comment_author . ' <a href="' . $parent_comment_url . '">who said</a></span>:<br /><br />' . $parent_comment->comment_content . '</div></div>';
         return $content . $string;
     }
 }
@@ -61,3 +61,22 @@ function spc_show_parent_comment_admin() {
     add_filter( 'get_comment_text', 'spc_show_parent_comment' );
 }
 add_action( 'admin_init', 'spc_show_parent_comment_admin' );
+
+
+// ********** load the necessary scripts and stylesheets **********
+function show_parent_comment_enqueue( $hook ) {
+
+    // exit is not on a page that show comments (the Comments page or Edit post/page screen)
+    if ( 'edit-comments.php' != $hook && 'post.php' != $hook ) {
+        return;
+    }
+
+    // register and enqueue our stylesheets and scripts as necessary
+    wp_register_style( 'show_parent_comment_admin_css', plugins_url( '/includes/show-parent-comment.css', __FILE__ ), false );
+    wp_enqueue_style( 'show_parent_comment_admin_css' );
+    wp_enqueue_script( 'show_parent_comment_admin_js', plugins_url( '/includes/show-parent-comment.js', __FILE__ ), array( 'jquery' ) );
+
+}
+add_action( 'admin_enqueue_scripts', 'show_parent_comment_enqueue' );
+// *********************************************************
+
