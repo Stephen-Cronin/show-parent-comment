@@ -26,8 +26,12 @@ Author URI: http://scratch99.com/
 */
 
 
-// if there's no parent, return comment text as is, otherwise grab the parent and add it.
+/**
+ * Filter comments and add parent comment to output
+ */
 function spc_show_parent_comment( $content ) {
+
+    // get the global comment variable
     global $comment;
 
     // if there's no parent comment, return the comment text unchanged
@@ -43,7 +47,7 @@ function spc_show_parent_comment( $content ) {
 
         // if the user can edit the parent comment, we'll link to the edit screen for the parent comment
         if ( current_user_can( 'edit_comment', $parent_comment->comment_ID ) ) {
-            $parent_comment_url = admin_url('comment.php?action=editcomment&c=' . absint( $parent_comment->comment_ID ) );
+            $parent_comment_url = admin_url( 'comment.php?action=editcomment&c=' . absint( $parent_comment->comment_ID ) );
         }
         // otherwise we'll link to the parent comment on the front end
         else {
@@ -52,21 +56,28 @@ function spc_show_parent_comment( $content ) {
 
         // create the string to be appended to the comment text
         $string = '<div class="spc-parent-comment-container"><div class="spc-parent-comment"><span class="submitted-on" >In reply to ' . $parent_comment->comment_author . ' <a href="' . $parent_comment_url . '">who said</a></span>:<br /><br />' . $parent_comment->comment_content . '</div></div>';
+
+        // append and return
         return $content . $string;
     }
 }
 
-// if it's an admin request, filter comments and add comment parent below text
+
+/**
+ * Call function to filter comments on Admin requests
+ */
 function spc_show_parent_comment_admin() {
     add_filter( 'get_comment_text', 'spc_show_parent_comment' );
 }
 add_action( 'admin_init', 'spc_show_parent_comment_admin' );
 
 
-// ********** load the necessary scripts and stylesheets **********
-function show_parent_comment_enqueue( $hook ) {
+/**
+ * Load the necessary scripts and stylesheets
+ */
+function spc_show_parent_comment_enqueue( $hook ) {
 
-    // exit is not on a page that show comments (the Comments page or Edit post/page screen)
+    // exit if not on a page that show comments (the Comments page or Edit post/page screen)
     if ( 'edit-comments.php' != $hook && 'post.php' != $hook ) {
         return;
     }
@@ -77,6 +88,4 @@ function show_parent_comment_enqueue( $hook ) {
     wp_enqueue_script( 'show_parent_comment_admin_js', plugins_url( '/includes/show-parent-comment.js', __FILE__ ), array( 'jquery' ) );
 
 }
-add_action( 'admin_enqueue_scripts', 'show_parent_comment_enqueue' );
-// *********************************************************
-
+add_action( 'admin_enqueue_scripts', 'spc_show_parent_comment_enqueue' );
