@@ -26,12 +26,6 @@ Author URI: http://scratch99.com/
 */
 
 
-// if this is an Ajax request, no need to do anything, return
-if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-    return;
-}
-
-
 /**
  * Filter comments and add parent comment to output
  */
