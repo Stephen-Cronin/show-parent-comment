@@ -3,8 +3,8 @@
 Plugin Name: Show Parent Comment
 Plugin URI: http://scratch99.com/
 Description: Show the parent comment as part of the comment text, in the Admin area only. Useful for getting context when moderating comments.
-Version: 0.1
-Date: 1 September 2015
+Version: 0.1.1
+Date: 19 September 2015
 Author: Stephen Cronin (Scratch99 Design)
 Author URI: http://scratch99.com/
 

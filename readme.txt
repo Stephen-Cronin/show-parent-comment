@@ -3,8 +3,8 @@ Contributors: StephenCronin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=sjc@scratch99.com&currency_code=&amount=&return=&item_name=WP-ShowParentComment
 Tags: comments, comment moderation, show parent comment, show comment parent, parent comment
 Requires at least: 4.2
-Tested up to: 4.3
-Stable tag: 0.1
+Tested up to: 4.3.1
+Stable tag: 0.1.1
 Add the parent comment to comments in the WP Admin area, in order to assist with comment moderation
 
 == Description ==
@@ -46,6 +46,12 @@ Not at this time. If enough people request this feature, I'll consider adding it
 1. The Comments screen with the parent comment displayed.
 
 == Changelog ==
+
+= 0.1.1 (19 September 2015) =
+* Bug fix: Prevented the plugin from firing during Ajax requests, as we don't want the parent comment added then (for example when user edits their comment on the front end via Ajax).
+* Enhancement: Simplified the introduction to the parent comment, removing author name and edit link.
+* Enhancement: Tweaked the background colour of the parent comment.
+* Enhancement: Slightly increased the size of the Show More link.
 
 = 0.1 (8 September 2015) =
 * Initial Beta Release.
