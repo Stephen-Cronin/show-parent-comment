@@ -52,10 +52,10 @@ function spc_show_parent_comment( $content ) {
         $parent_comment = get_comment( $comment->comment_parent );
 
         // create the string to be appended to the comment text
-        $string = '<div class="spc-parent-comment-container"><div class="spc-parent-comment"><strong>In response to:</strong><br /><br />' . $parent_comment->comment_content . '</div></div>';
+        $string = '<div class="spc-parent-comment-container"><div class="spc-parent-comment">' . $parent_comment->comment_content . '</div></div>';
 
         // append and return
-        return $content . $string;
+        return $string . $content;
     }
 }
 
