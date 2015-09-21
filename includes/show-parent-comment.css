@@ -3,6 +3,8 @@
 	font-style:italic;
 	opacity: .6;
 	margin-top: 10px;
+	border-left: 3px solid #ddd;
+	padding-left: 8px;
 }
 
 .spc-parent-comment:before {
