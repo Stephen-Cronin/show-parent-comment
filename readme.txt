@@ -41,7 +41,7 @@ There are none! This plugin is purposely kept simple.
 
 == Screenshots ==
 
-1. The Comments screen with the parent comment displayed.
+1. Show Parent Comment in action on the Comments screen.
 
 == Changelog ==
 
