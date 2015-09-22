@@ -1,6 +1,10 @@
 jQuery(document).ready(function($){
-	// set the height of the div to 25px, add some CSS and then add the Show More button after the content
-	$('.spc-parent-comment').css('height','20px').css('overflow-y','hidden').before('<div class="spc-show-more" style="cursor:pointer; font-style:normal;">Show more &#9656;</div>');
+	// set the height of the div to 20px, add some CSS and then add the Show More button after the content (if content is greater than 20px)
+	$('.spc-parent-comment').each(function(){
+		if ($(this).height()>20) {
+			$(this).css('height','20px').css('overflow-y','hidden').before('<div class="spc-show-more" style="cursor:pointer; font-style:normal;">Show more &#9656;</div>');
+		}
+	});
 	// bind the Show More button click event so we can manipulate the content and button state
 	$('.spc-show-more').on('click',function() {
 		// if it's partially hidden, clicking the button will show everything and change the button to Show Less
