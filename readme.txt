@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=sjc@scra
 Tags: comments, comment moderation, show parent comment, show comment parent, parent comment
 Requires at least: 4.2
 Tested up to: 4.3.1
-Stable tag: 0.1.1
+Stable tag: 0.2
 Add the parent comment to comments in the WP Admin area, in order to assist with comment moderation
 
 == Description ==
@@ -24,7 +24,8 @@ The free version of this plugin is officially not supported, but if you leave a 
 This plugin is released under the [GPL licence](http://www.gnu.org/copyleft/gpl.html). I do not accept any responsibility for any damages or losses, direct or indirect, that may arise from using the plugin or these instructions. This software is provided as is, with absolutely no warranty. Please refer to the full version of the GPL license for more information.
 
 = Acknowledgments =
-This plugin is a result of Jeff Chandler's idea, expressed in [this tweet](https://twitter.com/jeffr0/status/638366391041572865).
+* This plugin is a result of Jeff Chandler's idea, expressed in [this tweet](https://twitter.com/jeffr0/status/638366391041572865).
+* The clunky original UI was redesigned by Jason Lemieux from [Postmatic](http://gopostmatic.com/) in version 0.2.
 
 == Installation ==
 1. Download the plugin file and unzip it.
@@ -38,14 +39,14 @@ Alternatively, you can install the plugin automatically through the WordPress Ad
 = Where are the settings? =
 There are none! This plugin is purposely kept simple.
 
-= Can I change the color of the parent comment? =
-Not at this time. If enough people request this feature, I'll consider adding it.
-
 == Screenshots ==
 
 1. The Comments screen with the parent comment displayed.
 
 == Changelog ==
+
+= 0.2 (22 September 2015) =
+* Enhancement: Reworked the UI so that the parent comment appears before the comment, in a style similar to a blockquote (props to Jason Lemieux from Postmatic).
 
 = 0.1.1 (19 September 2015) =
 * Bug fix: Prevented the plugin from firing during Ajax requests, as we don't want the parent comment added then (for example when user edits their comment on the front end via Ajax).
