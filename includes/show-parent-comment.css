@@ -1,5 +1,23 @@
 .spc-parent-comment-container {
-	border:1px solid #ccc;
-	background:#EAF4FF;
-	padding: 8px 12px;
+	quotes: "“" "”" "‘" "’";
+	font-style:italic;
+	opacity: .6;
+	margin-top: 10px;
+	border-left: 3px solid #ddd;
+	padding-left: 8px;
+}
+
+.spc-parent-comment:before {
+    content: open-quote;
+}
+
+.spc-parent-comment:after {
+    content: close-quote;
+}
+
+.spc-show-more {
+	float: right;
+	margin-left; 15px;
+	width: 95px;
+	font-weight: bold;
 }
