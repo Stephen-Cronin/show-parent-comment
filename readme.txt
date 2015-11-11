@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=sjc@scra
 Tags: comments, comment moderation, show parent comment, show comment parent, parent comment
 Requires at least: 4.2
 Tested up to: 4.3.1
-Stable tag: 0.2
+Stable tag: 0.2.1
 Add the parent comment to comments in the WP Admin area, in order to assist with comment moderation
 
 == Description ==
@@ -44,6 +44,9 @@ There are none! This plugin is purposely kept simple.
 1. Show Parent Comment in action on the Comments screen.
 
 == Changelog ==
+
+= 0.2.1 (11 November 2015) =
+* Bug Fix: Made changes to how the comment object is accessed so it works with WordPress 4.4 (plugin breaks with the beta version).
 
 = 0.2 (22 September 2015) =
 * Enhancement: Reworked the UI so that the parent comment appears before the comment, in a style similar to a blockquote (props to Jason Lemieux from Postmatic).
