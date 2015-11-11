@@ -35,10 +35,7 @@ if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 /**
  * Filter comments and add parent comment to output
  */
-function spc_show_parent_comment( $content ) {
-
-    // get the global comment variable
-    global $comment;
+function spc_show_parent_comment( $content, $comment ) {
 
     // if there's no parent comment, return the comment text unchanged
     if ( ! $comment->comment_parent ) {
@@ -63,7 +60,7 @@ function spc_show_parent_comment( $content ) {
  * Call function to filter comments on Admin requests
  */
 function spc_show_parent_comment_admin() {
-    add_filter( 'get_comment_text', 'spc_show_parent_comment' );
+    add_filter( 'get_comment_text', 'spc_show_parent_comment', 10, 2 );
 }
 add_action( 'admin_init', 'spc_show_parent_comment_admin' );
 
