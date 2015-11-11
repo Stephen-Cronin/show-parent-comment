@@ -3,8 +3,8 @@
 Plugin Name: Show Parent Comment
 Plugin URI: https://wordpress.org/plugins/show-parent-comment/
 Description: Show the parent comment as part of the comment text, in the Admin area only. Useful for getting context when moderating comments.
-Version: 0.2
-Date: 22 September 2015
+Version: 0.2.1
+Date: 11 November 2015
 Author: Stephen Cronin (Scratch99 Design)
 Author URI: http://scratch99.com/
 
